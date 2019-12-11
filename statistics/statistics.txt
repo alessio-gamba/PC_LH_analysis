@@ -1,0 +1,32 @@
+simulation1 PS->PC
+
+min: 1
+max: 23
+mean: 10.3858
+std: 2.7446490413165763
+Z: 30.828786750604568
+p-val: 1.0782759523502761e-208
+Running time: 1010.712 seconds
+
+
+simulation1 PC->PS
+
+min: 1
+max: 26
+mean: 10.33961
+std: 2.7480274831049267
+Z: 32.627180969345694
+p-val: 1.6887412273651489e-233
+Running time: 2939.675 seconds
+
+
+simulation1 PS_omim->PC
+
+min: 0
+max: 17
+mean: 5.5268
+std: 2.133940430283845
+Z: 41.92863058885799
+p-val: 0.0
+Running time: 514.953 seconds
+
