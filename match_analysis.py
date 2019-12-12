@@ -78,11 +78,9 @@ def Print_stat(match, observed):
 
 
 ##############################################
-
-
-##############################################
-
-## GENERAL ANALYSIS
+# GENERAL ANALYSIS
+# The first part simply open the input files,
+# PS.txt, PC.txt, omim.txt and LH.txt, showing some general properties.
 
 print('\n-->  PS dataset analysis  <--')   
 PS = Read_dataset('PS.txt') # analysis on the PS dataset
@@ -102,7 +100,7 @@ print (len(omim2))
 
 
 ##############################################
-
+# This second part shows different intersections among dataset
 
 print('\n-->  Shared Proteins  <--')
 int1 = PS[1] & PC[1] # PS and PC intersection (number of proteins)
@@ -113,11 +111,11 @@ print('Proteins shared between OMIM-no-LH and PC: %d' % len(int2))
 
 # We want obtain reduced PS and PC dataset for searching faster.
 # We selected the PC and PS clusters that have only shared proteins.
-
 PS1 = [i&int1 for i in PS[0] if len(i&int1)>=2] # reduced PS dataset with only proteins present in PC
 PC1 = [i&int1 for i in PC[0] if len(i&int1)>=2] # reduced PC dataset with only proteins present in PS
-PC2 = [i&int2 for i in PC[0] if len(i&int2)>=2] # reduced PC dataset with only proteins present in omim-no-PS
+PC2 = [i&int2 for i in PC[0] if len(i&int2)>=2] # reduced PC dataset with only proteins present in omim-no-LH
 
+# we are selecting the elements present in the obtained reduced dataset. 
 el_PS1=set([i for clus in PS1 for i in clus])
 el_PC1=set([i for clus in PC1 for i in clus])
 el_PC2=set([i for clus in PC2 for i in clus])
@@ -128,11 +126,13 @@ match2 = Search_match(PC1,PS1,2) # observed match is 100/575
 print('Number of PS cluster sharing at least 2 proteins with at least 1 PC cluster: %d' % match1)
 print('Number of PC cluster sharing at least 2 proteins with at least 1 PS cluster: %d' % match2)
 
-
+# Chose only one of this simulation: 1, 2 or 3.
+# They take several minutes.
 M=Random_search(100000,PS[1],PS[0],PC1,el_PC1) # 1
 #M=Random_search(100000,PC[1],PC[0],PS1,el_PS1) # 2
 #M=Random_search(100000,omim2,PS[0],PC2,el_PC2) # 3
 
+# then print statistics, using the correct match
 Print_stat(M, match1) # for simulation 1 and 3
 #Print_stat(M, match2) # for simulation 2
 
@@ -141,14 +141,14 @@ t1 = time.clock()
 time = t1-t0
 print("Running time: %.3f seconds" % time)
 
-
+# writing an output with all the simulations
 out = open('matches.txt','w')
 for num in M:
   out.write('%s\n' % num)
 out.close()
 
 
-
+# depiction of the distribution
 x=list(set(M))
 x.sort()
 y=[M.count(n) for n in x]
