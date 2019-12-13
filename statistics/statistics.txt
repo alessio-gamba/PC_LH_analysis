@@ -9,7 +9,7 @@ p-val: 1.0782759523502761e-208
 Running time: 1010.712 seconds
 
 
-simulation1 PC->PS
+simulation2 PC->PS
 
 min: 1
 max: 26
@@ -20,7 +20,7 @@ p-val: 1.6887412273651489e-233
 Running time: 2939.675 seconds
 
 
-simulation1 PS_omim->PC
+simulation3 PS_omim->PC
 
 min: 0
 max: 17
