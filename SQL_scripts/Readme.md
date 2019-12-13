@@ -1,3 +1,5 @@
+#SQL scripts
+
 The following files are the scripts performed for the analysis reported in the manuscript entitled ‘Quantitative Analysis of the Disease-associated Proteins that Cause Locus Heterogeneity and are Members of the Same Protein Complex’ by Gamba A, Salmona M and Bazzoni G (Revised December 11, 2019)
 
 1. 01_diseases_all: the OMIM-derived genetic diseases
